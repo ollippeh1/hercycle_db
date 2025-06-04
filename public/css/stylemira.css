@@ -1,0 +1,205 @@
+.card-body {
+    position: relative; /*Supaya .logo dengan absolute tetap di dalamnya*/
+    background-color: transparent;
+    margin-left: 170px;
+    margin-right: 100px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.font-croissant {
+    font-family: 'Croissant One', cursive;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700; 
+}
+
+.d-flex min-vh-100{
+    height: 100vh; /*Setinggi viewport*/
+    overflow: hidden; /*ga ada scrollbar*/ 
+}
+
+/*BAGIAN KANAN---------------------*/
+
+.logo { /*BELUM DIPAKE! BINGUNG*/
+    position: absolute;
+    top: -80px; /*atur seberapa tinggi logo dari atas card-body*/
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-wrapper { /*BELUM DIPAKE! BINGUNG*/
+    margin-top: 150px;
+}
+
+.icon-regist{ /*icon di registrasi*/
+    width: 25px;
+    height: 25px;
+}
+
+.custom-input { /*kolom input*/
+    background-color: transparent;
+    border: none;                                      
+    outline: none;                   
+    box-shadow: none;
+    font-size: 18px;
+    color: #3F0216; /*Warna teks input*/
+    flex-grow: 1;
+    padding: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-select {
+    background-color: transparent;
+    border: none;                                      
+    outline: none;                   
+    box-shadow: none;
+    font-size: 18px;
+    color: #3F0216; /* Warna teks input */
+    flex-grow: 1;
+    padding: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input::placeholder { /*hilang klo diketik*/
+    color: #815162;
+    opacity: 1;
+}
+
+.custom-select::placeholder { /*hilang klo diketik*/
+    color: #815162;
+    opacity: 1;
+}
+
+.custom-input:focus { /*highlight pas klik*/
+    box-shadow: 0 0 0 0.2rem #ffccdda4; 
+    outline: none;
+    background-color: #ffccdd9d;
+}
+
+.custom-select:focus { /*highlight pas klik*/
+    box-shadow: 0 0 0 0.2rem #ffccdda4; 
+    outline: none;
+    background-color: #ffccdd9d;
+}
+
+.input-icon-group {
+    gap: 20px; /* Jarak antara ikon dan input */
+    border-bottom: 1px solid #FFCCDD;
+    padding-bottom: 10px; /* Jarak antara garis bawah dan input/ikon */
+    margin-bottom: 18px; /* Jarak antar grup input (di bawah garis) */
+    width: 100%;
+}
+
+.btn-custom {
+    background-color: #FFCCDD;      
+    color: #3F0216;                   
+    font-family: 'Poppins', sans-serif;  
+    font-size: 18px;          
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2); /* x-offset y-offset blur-radius spread-radius color */
+}
+
+.btn-custom:hover { /* warna saat hover */
+    background-color: #944a5dce;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3)
+}
+
+.right-panel { /*bagian kanan panel*/
+    width: 65%;
+    background-color: #E18EA0;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+}
+
+
+/*BAGIAN KIRI---------------------*/
+
+.nav-link { /*aturan yg sm nav-kiri nav-bawah spy ga double*/
+    font-weight: bold;
+    font-size: 25px;
+    display: block; /* Penting! Agar width berfungsi */
+    text-align: center;
+    width: 180px;
+    box-sizing: border-box;
+    padding: 20px 0px 20px 0px; /*atas-kanan-bawah-kiri (panjang diatur width)*/
+}
+.nav-link:hover { /* warna saat hover */
+    background-color: #993e5d;
+    color: #FFE2EC;
+}
+
+.nav-atas { /*sign*/
+    background-color: #E18EA0;
+    border: 3px solid #E18EA0;
+    border-radius: 20px;  
+    margin-bottom: 30px;
+    color: #6B1934;
+}
+
+.nav-bawah { /*login*/
+    border: 3px solid #E18EA0;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    color: #6B1934;
+}
+
+.left-panel { /*bagian kiri panel*/
+    width: 35%;
+    background-color: #FFE2EC;
+    padding: 40px 0;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*pesan error*/
+
+.alert-danger {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.alert-danger.validation-multi-error ul {
+    list-style: disc; /*bullet point*/
+    padding-left: 20px; /*spy bullet terlihat*/
+}
+
+.tooltip-msg { /*pesan input*/
+    position: absolute;
+    bottom: 45px; /*naik ke atas input*/
+    left: 40px; /*jarak dari ikon*/
+    background-color: #FFCCDD;
+    color: #3F0216;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 10;
+    max-width: 300px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+

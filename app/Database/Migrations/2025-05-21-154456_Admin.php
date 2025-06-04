@@ -27,6 +27,11 @@ class Admin extends Migration
                 'null' => FALSE,
                 'unique' => TRUE,
             ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => FALSE,
+            ],
             'created_at' => [
                 'type' => 'datetime',
                 'null' => TRUE
