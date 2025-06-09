@@ -18,18 +18,22 @@
             <h4 class="text-center text-white font-croissant font-weight-bold">SIGN UP</h4>
 
             <?php if (session()->getFlashdata('success')) : ?>
-            <div class="alert alert-success">
-                <?= session()->getFlashdata('success') ?>
+            <div class="alert alert-success" id="flash-success">
+                <?= session()->getFlashdata('success'); ?>
             </div>
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('error')) : ?>
-            <div class="alert alert-danger">
-                <?= session()->getFlashdata('error') ?>
+            <div class="alert alert-danger" id="flash-error">
+                <?= session()->getFlashdata('error'); ?>
             </div>
             <?php endif; ?>
 
-            <?= validation_list_errors('my_alert_list') ?>
+            <?php if (session()->getFlashdata('_ci_validation_errors')) : ?>
+            <div class="alert alert-danger" id="validation-errors">
+                <?= validation_list_errors() ?>
+            </div>
+            <?php endif; ?>
 
             <form action="<?= base_url('register') ?>" method="post">
                 <?= csrf_field() ?>
@@ -47,16 +51,15 @@
 
                 <div class="font-poppins d-flex align-items-center input-icon-group position-relative">
                     <img src="<?= base_url('fotomira/key.png') ?>" class="icon-regist" alt="key">
-                    <input type="password" name="password" class="custom-input show-tooltip"
-                        placeholder="Password" required
+                    <input type="password" name="password" class="custom-input show-tooltip" placeholder="Password"
+                        required
                         data-tooltip="Password minimal terdiri dari 8 karakter, huruf besar, kecil, dan angka.">
                     <div class="tooltip-msg"></div>
                 </div>
 
                 <div class="font-poppins d-flex align-items-center input-icon-group">
                     <img src="<?= base_url('fotomira/lock.png') ?>" class="icon-regist" alt="lock"> <input
-                        type="password" name="confirm" class="custom-input" placeholder="Konfirmasi Password"
-                        required>
+                        type="password" name="confirm" class="custom-input" placeholder="Konfirmasi Password" required>
                 </div>
 
                 <div class="font-poppins d-flex align-items-center input-icon-group position-relative">
@@ -68,22 +71,20 @@
 
                 <div class="font-poppins d-flex align-items-center input-icon-group position-relative">
                     <img src="<?= base_url('fotomira/height.png') ?>" class="icon-regist" alt="height">
-                    <input type="text" name="tinggi" class="custom-input show-tooltip"
-                        placeholder="Tinggi Badan" value="<?= old('tinggi') ?>" required
-                        data-tooltip="Masukkan tinggi badan minimal 140 cm.">
+                    <input type="text" name="tinggi" class="custom-input show-tooltip" placeholder="Tinggi Badan"
+                        value="<?= old('tinggi') ?>" required data-tooltip="Masukkan tinggi badan minimal 140 cm.">
                     <div class="tooltip-msg"></div>
                 </div>
 
                 <div class="font-poppins d-flex align-items-center input-icon-group position-relative">
                     <img src="<?= base_url('fotomira/scale.png') ?>" class="icon-regist" alt="scale">
-                    <input type="text" name="berat" class="custom-input show-tooltip"
-                        placeholder="Berat Badan" value="<?= old('berat') ?>" required
-                        data-tooltip="Masukkan berat badan minimal 35 kg.">
+                    <input type="text" name="berat" class="custom-input show-tooltip" placeholder="Berat Badan"
+                        value="<?= old('berat') ?>" required data-tooltip="Masukkan berat badan minimal 35 kg.">
                     <div class="tooltip-msg"></div>
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-custom">SIGN UP</button>
+                    <button type="submit" class="btn-custom">SIGN UP</button>
                 </div>
             </form>
         </div>

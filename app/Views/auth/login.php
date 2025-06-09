@@ -18,19 +18,22 @@
             <h4 class="text-center text-white font-croissant font-weight-bold">SIGN UP</h4><br>
 
             <?php if (session()->getFlashdata('success')) : ?>
-            <div class="alert alert-success">
-                <?php echo session()->getFlashdata('success'); ?>
+            <div class="alert alert-success" id="flash-success">
+                <?= session()->getFlashdata('success'); ?>
             </div>
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('error')) : ?>
-            <div class="alert alert-danger">
-                <?php echo session()->getFlashdata('error'); ?>
+            <div class="alert alert-danger" id="flash-error">
+                <?= session()->getFlashdata('error'); ?>
             </div>
             <?php endif; ?>
 
-            <?= validation_list_errors() ?>
-
+            <?php if (session()->getFlashdata('_ci_validation_errors')) : ?>
+            <div class="alert alert-danger" id="validation-errors">
+                <?= validation_list_errors() ?>
+            </div>
+            <?php endif; ?>
 
             <form action="<?= base_url('login') ?>" method="post">
                 <?= csrf_field() ?>
@@ -57,7 +60,8 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-custom">LOGIN</button>
+                    <a href="<?= base_url('lupapw') ?>" class="forget">Forget Password?</a>
+                    <button type="submit" class="btn-custom">LOGIN</button>
                 </div>
             </form>
         </div>

@@ -98,6 +98,20 @@
     width: 100%;
 }
 
+.login-group {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.forget {
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    margin-right: 290px;
+    font-size: 18px;
+    margin-top: 15px;
+    text-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
 .btn-custom {
     background-color: #FFCCDD;      
     color: #3F0216;                   
@@ -113,7 +127,8 @@
 
 .btn-custom:hover { /* warna saat hover */
     background-color: #944a5dce;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3)
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+    outline: none; /*hilangkan border hitam default pas klik*/
 }
 
 .right-panel { /*bagian kanan panel*/
@@ -198,6 +213,168 @@
     max-width: 300px;
     font-family: 'Poppins', sans-serif;
 }
+
+/*FORGET PASSWORD---------------------*/ /*Tengah secara Horizontal: elemen berada di tengah dari kiri ke kanan*/
+/*BAGIAN KANAN---------------------*/    /*Tengah secara Vertikal: elemen berada di tengah dari atas ke bawah*/
+
+.kanan-panel {
+    width: 55%;
+    background-color: #E18EA0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Memusatkan kotak-pw secara horizontal di dalam kanan-panel */
+    align-items: center; /* Memusatkan kotak-pw secara vertikal di dalam kanan-panel */
+    /* Pastikan kanan-panel memiliki tinggi yang cukup jika ingin centering vertikal bekerja */
+    height: 100vh; /* Contoh, sesuaikan dengan kebutuhan layout utama */
+}
+
+.kotak-pw {
+    background-color: #FFE2EC;
+    padding: 10%; /* Gunakan padding yang simetris atau sesuai kebutuhan */
+    border-radius: 5%;
+    width: 680px; /* Contoh lebar FIX (misal 400px) */
+    height: 640px; /* Contoh min-height agar justify-content punya ruang */
+    display: flex;
+    flex-direction: column; /* Item ditumpuk dari atas ke bawah */
+    align-items: center;    /* Memusatkan item secara horizontal di dalam kotak-pw */
+    justify-content: center; /* <<< Ganti ini ke 'center' untuk memusatkan item secara vertikal */
+    gap: 20px; /* Tambahkan gap di sini untuk jarak antar elemen (judul, input, tombol) */
+}
+
+.text-forget {
+    /* Hapus justify-content: center; dari sini, tidak berlaku */
+    font-family: 'Croissant One', cursive;
+    font-weight: bold;
+    color: #3F0216;
+    /* padding-top: 30px; akan membuat jarak dari atas kotak-pw. Sesuaikan jika sudah pakai gap. */
+    /* Jika ingin teks di tengah horizontal, pastikan ini adalah block element dan tidak ada lebar yang membatasi */
+    text-align: center; /* Lebih tepat untuk memusatkan teks di dalam elemen h2 */
+    width: 100%; /* Pastikan elemen ini selebar mungkin untuk text-align center bekerja */
+}
+
+.pesan {
+    background-color: #FFCCDD;
+    color: #3F0216;
+    padding: 15px 10px 15px 10px; /*atas-kanan-bawah-kiri*/
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.input-forget {
+    display: flex; /* <<< Tambahkan ini agar Flexbox bekerja di sini */
+    gap: 20px;
+    border-bottom: 1px solid #3F0216;
+    padding-bottom: 10px;
+    width: calc(100% - (2 * 0px)); /* Sesuaikan dengan padding horizontal .kotak-pw jika perlu.
+                                     Jika ingin full width dari *konten* kotak-pw, cukup 100% */
+    /* Pastikan icon-regist dan custom-input adalah flex items */
+    align-items: center; /* Untuk memusatkan ikon dan input secara vertikal relatif satu sama lain */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.custom-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 18px;
+    color: #3F0216;
+    flex-grow: 1; /* Akan mengisi sisa ruang yang tersedia di dalam input-forget */
+    padding: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.continue {
+    background-color: #E18EA0;
+    color: #3F0216;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    border: none;
+    padding: 10px 20px; /* Beri padding horizontal agar tombol ada lebar */
+    border-radius: 80px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.continue:hover { /* warna saat hover */
+    background-color: #993e5d;
+    color: #FFE2EC;
+    outline: none; /*hilangkan border hitam default pas klik*/
+}
+
+.daftar { 
+    font-family: 'Poppins', sans-serif;
+    color: #3F0216;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.otp-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.otp-input {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #ffccdda4;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(153, 62, 93, 0.3); /* offsetX (0) offsetY (4) blur-radius color;*/
+    transition: all 0.2s ease;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.otp-input:focus {
+    border-color: #E18EA0; 
+    box-shadow: 0 0 10px 2px #E18EA0; 
+}
+
+
+
+/*BAGIAN KIRI---------------------*/
+
+.kiri-panel { /*bagian kiri panel*/
+    width: 45%;
+    height: 100vh;
+    background-color: #E18EA0;
+    padding: 0px; /*atas-kanan-bawah-kiri*/
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.muda {
+    background-color: #F0B9C7;
+    width: 200px;
+    height: 100%;
+    align-items: center;
+}
+.pink {
+    background-color: #E79FB0;
+    width: 200px;
+    height: 100%;
+    align-items: center;
+}
+
+.logo-forget {
+    position: absolute;
+    top: 50%;           /* Pindahkan 50% dari atas parent yang diposisikan */
+    left: 50%;          /* Pindahkan 50% dari kiri parent yang diposisikan */
+    transform: translate(-50%, -50%); /* Geser elemen kembali sebesar separuh lebarnya sendiri */
+}
+
 
 
 
