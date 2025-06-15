@@ -15,7 +15,7 @@
             <div class="text-center mb-3">
                 <img src="<?= base_url('fotomira/logo.png') ?>" alt="Logo" style="max-width: 150px;">
             </div>
-            <h4 class="text-center text-white font-croissant font-weight-bold">SIGN UP</h4>
+            <h4 class="text-center text-white font-croissant font-weight-bold mb-5">SIGN UP</h4>
 
             <?php if (session()->getFlashdata('success')) : ?>
             <div class="alert alert-success" id="flash-success">
@@ -29,8 +29,8 @@
             </div>
             <?php endif; ?>
 
-            <?php if (session()->getFlashdata('_ci_validation_errors')) : ?>
-            <div class="alert alert-danger" id="validation-errors">
+            <?php if (session()->getFlashdata('validation')) : ?>
+            <div id="validation-errors">
                 <?= validation_list_errors() ?>
             </div>
             <?php endif; ?>

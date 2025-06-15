@@ -67,6 +67,8 @@ class UserModel extends Model
 
     protected $skipValidation = false;
     protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
+
 
     protected function hashPassword(array $data)
     {

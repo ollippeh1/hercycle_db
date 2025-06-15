@@ -32,3 +32,12 @@ $routes->group('lupapw', function($routes){
 
     $routes->get('testEmail', 'LupapwController::testEmail');
 });
+
+$routes->group('profil', function($routes){
+    $routes->get('/', 'profilController::index');
+    $routes->get('editp', 'profilController::showEditForm');
+    $routes->post('editp', 'profilController::updatep');
+    $routes->post('hapusacc', 'ProfilController::hapusAkun');
+
+});
+

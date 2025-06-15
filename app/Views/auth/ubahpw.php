@@ -29,8 +29,8 @@
             </div>
             <?php endif; ?>
 
-            <?php if (session()->getFlashdata('_ci_validation_errors')) : ?>
-            <div class="alert alert-danger" id="validation-errors">
+            <?php if (session()->getFlashdata('validation')) : ?>
+            <div id="validation-errors">
                 <?= validation_list_errors() ?>
             </div>
             <?php endif; ?>

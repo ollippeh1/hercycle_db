@@ -24,20 +24,6 @@
 
 /*BAGIAN KANAN---------------------*/
 
-.logo { /*BELUM DIPAKE! BINGUNG*/
-    position: absolute;
-    top: -80px; /*atur seberapa tinggi logo dari atas card-body*/
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-wrapper { /*BELUM DIPAKE! BINGUNG*/
-    margin-top: 150px;
-}
 
 .icon-regist{ /*icon di registrasi*/
     width: 25px;
@@ -183,7 +169,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 
 /*pesan error*/
@@ -274,17 +260,7 @@
     margin-bottom: 30px;
 }
 
-.custom-input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    font-size: 18px;
-    color: #3F0216;
-    flex-grow: 1; /* Akan mengisi sisa ruang yang tersedia di dalam input-forget */
-    padding: 0;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
+
 
 .continue {
     background-color: #E18EA0;
@@ -375,6 +351,198 @@
     transform: translate(-50%, -50%); /* Geser elemen kembali sebesar separuh lebarnya sendiri */
 }
 
+/*PROFIL---------------------*/
+
+.profil-wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh; /* biar minimal tetap 1 layar */
+  gap: 0px;
+}
+
+/*BAGIAN KIRI---------------------*/
+
+.sidebar {
+  font-family: 'Poppins', sans-serif;
+  width: 200px;
+  height: 100%; /* beri jarak vertikal */
+  background-color: #E18EA0;
+  padding: 20px 10px;
+  margin: 8px; /* tambahkan margin untuk memberi ruang di sekeliling */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+/* Kontainer utama untuk logo */
+.logo {
+  position: relative; /* Membuat kontainer sebagai referensi posisi */
+  width: 150px; /* Lebar kontainer */
+  height: 150px; /* Tinggi kontainer */
+  background-color: #ffccdd; /* Warna latar belakang */
+  border-radius: 20px; /* Radius sudut */
+  margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+  overflow: hidden;
+}
+
+/* Elemen yang menampung gambar logo */
+.logo-img {
+  position: absolute; /* Mengatur posisi absolut relatif terhadap .logo */
+  top: 50%; /* Posisi vertikal 50% dari kontainer */
+  left: 50%; /* Posisi horizontal 50% dari kontainer */
+  transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
+  width: 68%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 68%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  object-fit: contain; /* Menjaga proporsi gambar */
+}
+
+.menu-btn, a.menu-btn {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8cbd8;
+  border: none;
+  margin: 10px 0;
+  padding: 12px;
+  height: 40px;
+  width: 100%;
+  border-radius: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #4b2c3a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+  outline: none;
+}
+
+.menu-btn:hover, a.menu-btn:hover {
+    background-color:  #b7345d; /* warna background saat hover */
+    color: #fff; /* warna teks saat hover */
+    text-decoration: none; /* pastikan underline tetap hilang saat hover */
+    outline: none;
+}
+
+.icon-menu {
+    max-width: 25px;
+}
+
+.panel-profil-kr {
+    width: 20%;
+    background-color: #FFE2EC;
+    padding: 40px 20px; /* Atur padding kiri-kanan di sini saja */
+    box-sizing: border-box; /* Supaya padding tidak menambah total lebar */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    flex-shrink: 1;
+}
+
+/*BAGIAN KANAN---------------------*/
+
+.panel-profil-kn { /*bagian kanan panel*/
+    width: 80%;
+    background-color: #FFE2EC;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;       /* ← PENTING */
+    justify-content: flex-start;  /* ← pastikan tetap */
+    align-items: center; 
+}
+
+.card-profil {
+    background: #E18EA0;
+    padding: 10px 250px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.usrname {
+    text-align: center;
+    color: white;
+    font-family: 'Croissant One', cursive;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.tampil-data {
+    background-color: #FFE2EC;
+    padding: 10px 13px 10px 13px; /*atas-kanan-bawah-kiri*/ 
+    color: #3F0216;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-weight: normal;
+    width: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.custom-seks { /*tampil data buat jenis kelamin*/
+    background-color: #C3B2B8;
+    padding: 10px 13px 10px 13px; /*atas-kanan-bawah-kiri*/ 
+    color: #3F0216;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-weight: normal;
+    width: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.edit-data {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.edit-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #3F0216;
+    font-size: 22px;
+    padding-left: 16px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFE2EC;
+    color: #3F0216;
+    font-size: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.edit-seks {
+    background: #C3B2B8;
+    
+}
+
+.custom-input.fc-pr:focus { /*untk fokus inputannya khusus form profil*/
+    box-shadow: 0 0 0 0; 
+    outline: none;
+    background-color: transparent;
+}
+
+.panah {
+    appearance: none;
+}
+
+.t-edit { /*pesan input pengaturan tambahan tooltip-msg*/
+    bottom: 52px; /*naik ke atas input*/
+    left : 200px; /*jarak dari ikon*/
+}
 
 
 

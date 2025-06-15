@@ -68,7 +68,8 @@ class LoginController extends BaseController
         if ($userData['role'] === 'admin') {
             return redirect()->to(base_url('edukasiadmin'));
         } else {
-            return redirect()->to(base_url('dashboard'));
+            session()->set('id_user', $user['id_user']);
+            return redirect()->to(base_url('dashboad'));
         }
     }
 

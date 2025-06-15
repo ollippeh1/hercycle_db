@@ -45,8 +45,10 @@
     setTimeout(function() {
         const success = document.getElementById('flash-success');
         const error = document.getElementById('flash-error');
+        const info = document.getElementById('flash-info');
         if (success) success.style.display = 'none';
         if (error) error.style.display = 'none';
+        if (info) info.style.display = 'none';
     }, 3000);
     </script>
 
