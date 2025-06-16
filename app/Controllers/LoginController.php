@@ -69,7 +69,7 @@ class LoginController extends BaseController
             return redirect()->to(base_url('edukasiadmin'));
         } else {
             session()->set('id_user', $user['id_user']);
-            return redirect()->to(base_url('dashboad'));
+            return redirect()->to(base_url('profil'));
         }
     }
 

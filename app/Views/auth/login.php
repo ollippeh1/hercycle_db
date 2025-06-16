@@ -15,7 +15,7 @@
             <div class="text-center mb-3">
                 <img src="<?= base_url('fotomira/logo.png') ?>" alt="Logo" style="max-width: 150px;">
             </div>
-            <h4 class="text-center text-white font-croissant font-weight-bold mb-5">SIGN UP</h4><br>
+            <h4 class="text-center text-white font-croissant font-weight-bold mb-5">LOGIN</h4><br>
 
             <?php if (session()->getFlashdata('success')) : ?>
             <div class="alert alert-success" id="flash-success">
