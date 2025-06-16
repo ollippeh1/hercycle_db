@@ -1,52 +1,49 @@
-<?php
-
-namespace App\Database\Migrations;
+<?php namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
-use FFI;
 
 class Edukasi extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_edukasi' => [
+            'id' => [
                 'type' => 'INT',
-                'unsigned' => TRUE,
-                'auto_increment' => TRUE
+                'constraint' => 11,
+                'unsigned' => true,
+                'auto_increment' => true
             ],
-            'user_id' => [
-                'type' => 'INT',
-                'unsigned' => TRUE,
+            'judul' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255
             ],
-            'admin_id' => [
-                'type' => 'INT',
-                'unsigned' => TRUE,
+            'deskripsi' => [
+                'type' => 'TEXT'
             ],
-            'artikel' => [
-                'type' => 'TEXT',
-                'null' => FALSE,
+            'gambar' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
             ],
-            'created_at' => [
-                'type' => 'datetime',
-                'null' => TRUE
+            'tanggal' => [
+                'type' => 'DATE'
             ],
-            'updated_at' => [
-                'type' => 'datetime',
-                'null' => TRUE
+            'kategori' => [
+                'type' => 'ENUM',
+                'constraint' => ['haid', 'hamil']
+            ],
+            'penulis' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255
             ]
         ]);
 
-        $this->forge->addKey('id_edukasi', TRUE);
-        $this->forge->addForeignKey('user_id', 'user', 'id_user', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('admin_id', 'admin', 'id_admin', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('edukasi');
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('materi');
     }
-
-    //--------------------------------------------------------------------
 
     public function down()
     {
-        $this->forge->dropTable('edukasi');
+        $this->forge->dropTable('materi');
     }
 }

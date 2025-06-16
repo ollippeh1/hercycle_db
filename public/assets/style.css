@@ -1,0 +1,351 @@
+/* ===================== */
+/* WARNA UTAMA - BISA DIGANTI DI SINI */
+:root {
+  --warna-bg-body: #FFE2EC;
+  --warna-sidebar: #E18EA0;
+  --warna-sidebar-menu: #E18EA0;
+  --warna-sidebar-active: #CD4C77;
+
+  --warna-main-content: #fff0f6;
+  --warna-header: #E18EA0;
+  --warna-btn-add: #FFCCDD;
+
+  --warna-table-border: #f8bbd0;
+
+  --warna-btn-detail: #B5D8FF;
+  --warna-btn-edit: #FFFF86;
+  --warna-btn-hapus: #FF6969;
+
+  --warna-form-bg: #ffe0ec;
+  --warna-form-input: #E18EA0;
+  --warna-form-title: #3F0216;
+  --warna-btn-simpan: #95CE8E;
+  --warna-btn-kembali: #D8D8D8;
+}
+/* ===================== */
+
+
+/* ========== GLOBAL STYLING (digunakan di semua halaman) ========== */
+body {
+  margin: 0;
+  font-family: 'poppin', sans-serif;
+  background-color: var(--warna-bg-body);
+}
+
+.container {
+  display: flex;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+
+/* ========== SIDEBAR (index.php) ========== */
+.sidebar {
+  width: 160px;
+  height: calc(100vh - 40px); /* beri jarak vertikal */
+  background-color: var(--warna-sidebar);
+  padding: 20px;
+  margin: 10px; /* tambahkan margin untuk memberi ruang di sekeliling */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+
+/* Kontainer utama untuk logo */
+.logo {
+  position: relative; /* Membuat kontainer sebagai referensi posisi */
+  width: 150px; /* Lebar kontainer */
+  height: 150px; /* Tinggi kontainer */
+  background-color: #ffccdd; /* Warna latar belakang */
+  border-radius: 20px; /* Radius sudut */
+  margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+}
+
+/* Elemen yang menampung gambar logo */
+.logo-img {
+  position: absolute; /* Mengatur posisi absolut relatif terhadap .logo */
+  top: 70%; /* Posisi vertikal 50% dari kontainer */
+  left: 50%; /* Posisi horizontal 50% dari kontainer */
+  transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
+  width: 130%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 130%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  object-fit: contain; /* Menjaga proporsi gambar */
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+    border-radius: 0; /* Hapus efek bulat */
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-sidebar {
+font-weight: bold;
+font-size: 14px;
+}
+
+.menu li {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: var(--warna-sidebar-menu);
+  border-radius: 10px;
+  text-align: center;
+  color: #3F0216;
+  cursor: pointer;
+}
+
+.menu li.active {
+  background-color: var(--warna-sidebar-active);
+}
+
+.sidebar.active {
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== HALAMAN UTAMA (index.php) ========== */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  margin: 30px 20px 20px 0;
+}
+
+header { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--warna-header);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: 100%;    
+  height: 70px;      /* atur tinggi sesuai keinginan */
+  box-sizing: border-box; 
+}
+
+
+.btn-add {
+  background-color: var(--warna-btn-add);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--warna-table-border);
+}
+
+img {
+  width: 70px;
+  border-radius: 8px;
+}
+
+
+/* ========== BUTTON KHUSUS (semua halaman) ========== */
+.btn-group {
+  display: flex;
+  gap: 6px; /* kurangi jarak antar tombol */
+  flex-wrap: wrap; /* biar bisa pindah baris kalau sempit */
+}
+
+.btn-group .btn {
+  padding: 4px 8px;       /* lebih kecil dari sebelumnya */
+  font-size: 12px;        /* teks lebih kecil */
+  height: auto;           /* biar fleksibel */
+  display: inline-flex;   /* biar sekecil kontennya */
+  align-items: center;
+  gap: 4px;               /* jarak antara ikon dan teks */
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  max-width: 100%;
+}
+
+.btn-group .btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.btn.detail {
+  background-color: var(--warna-btn-detail);
+  color: #3F0216;
+}
+
+.btn.edit {
+  background-color: var(--warna-btn-edit);
+  color: #3F0216;
+}
+
+.btn.hapus {
+  background-color: var(--warna-btn-hapus);
+  color: #3F0216;
+}
+
+
+
+.btn.simpan {
+  background-color: var(--warna-btn-simpan);
+  color: #3F0216
+}
+
+.btn.kembali {
+  background-color: var(--warna-btn-kembali);
+  color: #3F0216;
+}
+
+
+/* ========== FORM (tambah.php & edit.php) ========== */
+.form-container {
+  width: 94%;
+  margin: 40px auto;
+  background-color: var(--warna-form-bg);
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.form-title {
+  width: 330px; /* Atur lebar kotak sesuai kebutuhan */
+  margin: 0 auto; /* Membuat kotak ini berada di tengah secara horizontal */
+  text-align: center;
+  color: var(--warna-form-title);
+  background-color: var(--warna-sidebar);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--warna-form-input);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 26px;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-buttons {
+  margin-top: 25px;
+}
+
+/* ========== DETAIL PAGE (detail.php) ========== */
+.halaman-detail .form-title {
+  width: 330px;
+  margin: 40px auto 20px auto;
+  text-align: center;
+  color: var(--warna-form-title);
+  background-color: var(--warna-sidebar);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.deskripsi {
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.deskripsi h3 {
+  margin-bottom: 5px;
+}
+
+.user-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1px;
+    padding-right: 20px;
+    margin-top: -20px; /* Bisa sesuaikan naik-turun */
+}
+
+.icon-btn img {
+    width: 24px;       /* Ukuran lebih kecil */
+    height: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.icon-btn:hover img {
+    cursor: pointer;
+}
+
+/*untuk logo edit hapus dn detail*/
+.btn img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 6px;
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* ======= KATEGORI (select dropdown) ======= */
+select {
+  width: 102%;
+  padding: 12px;
+  background-color: var(--warna-form-input);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  appearance: none; /* Hilangkan default panah di beberapa browser */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 24px;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 204, 221, 0.5);
+}
+
