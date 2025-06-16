@@ -3,7 +3,7 @@
 use CodeIgniter\Model;
 use DateTime; // Pastikan menggunakan PHP's native DateTime untuk konsistensi
 
-class KalenderModel extends Model
+class Kalender_splash extends Model
 {
     protected $table      = 'kalender';
     protected $primaryKey = 'id_kalender';

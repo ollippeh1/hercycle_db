@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Kalender_splash;
 use App\Models\KalenderModel;
+use App\Models\User_splash;
 use App\Models\UserModel;
 use CodeIgniter\Controller;
 use DateTime; // Pastikan menggunakan PHP's native DateTime
@@ -11,8 +13,8 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $userModel = new UserModel();
-        $kalenderModel = new KalenderModel(); // Inisiasi KalenderModel
+        $userModel = new User_splash();
+        $kalenderModel = new User_splash(); // Inisiasi KalenderModel
 
         $userId = session()->get('id_user') ?? 1; // Fallback untuk user ID
         $user = $userModel->find($userId);
@@ -118,7 +120,7 @@ class Dashboard extends BaseController
     // Fungsi catat haid otomatis (hari ini)
     public function catatHaidHariIni()
     {
-        $kalenderModel = new KalenderModel();
+        $kalenderModel = new Kalender_splash();
         $userId = session()->get('id_user') ?? 1;
 
         // Panggil fungsi di model untuk mencatat periode hari ini (tanggal mulai haid)
@@ -139,7 +141,7 @@ class Dashboard extends BaseController
         $durasi = $this->request->getPost('durasi');
         $siklus = $this->request->getPost('siklus_haid') ?? 28; // Tambahkan siklus jika ini form lengkap
 
-        $model = new KalenderModel();
+        $model = new Kalender_splash();
         $model->insert([
             'user_id' => session()->get('id_user'),
             'tanggal_mulai_haid' => $tanggalMulai, // Pastikan kolom ini diizinkan di model

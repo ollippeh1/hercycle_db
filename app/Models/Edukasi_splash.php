@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EdukasiModel extends Model
+class Edukasi_splash extends Model
 {
     protected $table = 'edukasi'; // nama tabel di database kamu
     protected $primaryKey = 'id_edukasi';
