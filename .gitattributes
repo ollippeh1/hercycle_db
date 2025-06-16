@@ -1,0 +1,48 @@
+# ============================
+# Standard line endings setup
+# ============================
+
+# Semua file teks pakai LF
+* text=auto eol=lf
+
+# File PHP
+*.php text eol=lf
+
+# Web frontend
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+
+# Data dan config
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.xml  text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.ini  text eol=lf
+*.env  text eol=lf
+
+# Shell script dan git related
+*.sh   text eol=lf
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+*.gitattributes text eol=lf
+*.gitignore text eol=lf
+
+# Composer related
+composer.* text eol=lf
+
+# Image/Binary files (jangan diubah Git)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.zip binary
+*.mp4 binary

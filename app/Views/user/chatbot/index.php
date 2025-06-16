@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title) ?></title>
     <link rel="stylesheet" href="/assets/style-chatbotview.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -40,12 +41,13 @@
         <main class="main-content">
             <div class="topbar">
                 <div class="top-icons">
-                    <button class="profile-btn" id="profil-btn" aria-label="Profil Pengguna">
+                    <a href="<?= base_url('profil') ?>" class="profile-btn" id="profil-btn" aria-label="Profil Pengguna">
                         <img src="<?= base_url('assets/img/people.png') ?>" alt="Ikon Profil" class="icon-btn">
-                    </button>
-                    <button class="logout-btn" id="logout-btn" aria-label="Keluar">
+                    </a>
+
+                    <a href="#" class="logout-btn" id="logout-btn" aria-label="Keluar">
                         <img src="<?= base_url('assets/img/log-out 1.png') ?>" alt="Ikon Logout" class="icon-btn">
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -82,6 +84,34 @@
     </div>
     </main>
     </div>
+    <script>
+document.getElementById('logout-btn').addEventListener('click', function(e) {
+    e.preventDefault(); // Hindari langsung redirect
+
+    Swal.fire({
+        title: 'Yakin ingin keluar?',
+        text: "Anda akan keluar dari akun ini.",
+        icon: 'warning',
+        background: '#ffe6f0',
+        iconColor: '#ff69b4',
+        showCancelButton: true,
+        confirmButtonColor: '#ff4d88',
+        cancelButtonColor: '#ffb6c1',
+        confirmButtonText: 'Ya, logout',
+        cancelButtonText: 'Batal',
+        customClass: {
+            popup: 'swal-custom',
+            confirmButton: 'swal-confirm',
+            cancelButton: 'swal-cancel'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?= base_url('logout') ?>";
+        }
+    });
+});
+</script>
+
 </body>
 
 </html>

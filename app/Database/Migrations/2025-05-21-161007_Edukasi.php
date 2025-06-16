@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class Edukasi extends Migration
+class materi extends Migration
 {
     public function up()
     {

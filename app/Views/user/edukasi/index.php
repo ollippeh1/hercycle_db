@@ -8,7 +8,7 @@
     <title>Edukasi Pengguna</title>
     <link rel="stylesheet" href="<?= base_url('assets/style-user.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -45,26 +45,28 @@
                     <input type="text" class="search" placeholder="Cari..." id="searchInput">
                 </div>
                 <div class="top-icons">
-                    <button class="profile-btn" id="profil-btn">
+                    <a href="<?= base_url('profil') ?>" class="profile-btn" id="profil-btn">
                         <img src="<?= base_url('assets/img/people.png') ?>" alt="Profil" class="icon-btn">
-                    </button>
-                    <button class="logout-btn" id="logout-btn">
+                    </a>
+                    <a href="javascript:void(0)" class="logout-btn" id="logout-btn">
                         <img src="<?= base_url('assets/img/log-out 1.png') ?>" alt="Logout" class="icon-btn">
-                    </button>
+                    </a>
+
+
                 </div>
             </div>
 
             <div class="content-box">
                 <div class="tabs">
-                    <button class="tab-btn active" data-tab="semua">
+                    <a href="<?= base_url('artikel/semua') ?>" class="tab-btn active" data-tab="semua">
                         <img src="<?= base_url('assets/img/🦆 icon _book_.png') ?>" alt="Semua" class="icon"> Semua
-                    </button>
-                    <button class="tab-btn" data-tab="haid">
+                    </a>
+                    <a href="<?= base_url('artikel/haid') ?>" class="tab-btn" data-tab="haid">
                         <img src="<?= base_url('assets/img/🦆 icon _library books_.png') ?>" alt="Artikel Haid" class="icon"> Artikel Haid
-                    </button>
-                    <button class="tab-btn" data-tab="hamil">
+                    </a>
+                    <a href="<?= base_url('artikel/hamil') ?>" class="tab-btn" data-tab="hamil">
                         <img src="<?= base_url('assets/img/🦆 icon _library books_.png') ?>" alt="Artikel Hamil" class="icon"> Artikel Hamil
-                    </button>
+                    </a>
                 </div>
 
                 <div class="articles">
@@ -97,6 +99,34 @@
     </div>
 
     <script src="<?= base_url('assets/script-user.js') ?>"></script>
+ <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function (e) {
+            e.preventDefault(); // Cegah reload
+            Swal.fire({
+                title: 'Yakin ingin logout?',
+                text: "Kamu akan keluar dari akun ini.",
+                icon: 'warning',
+                background: '#fff0f5',
+                iconColor: '#ff69b4',
+                showCancelButton: true,
+                confirmButtonColor: '#ff4d88',
+                cancelButtonColor: '#ffb6c1',
+                confirmButtonText: 'Ya, Logout',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "<?= base_url('logout') ?>";
+                }
+            });
+        });
+    }
+});
+</script>
+
 </body>
 
 </html>

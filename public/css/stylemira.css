@@ -1,0 +1,550 @@
+.card-body {
+    position: relative; /*Supaya .logo dengan absolute tetap di dalamnya*/
+    background-color: transparent;
+    margin-left: 170px;
+    margin-right: 100px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.font-croissant {
+    font-family: 'Croissant One', cursive;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700; 
+}
+
+.d-flex min-vh-100{
+    height: 100vh; /*Setinggi viewport*/
+    overflow: hidden; /*ga ada scrollbar*/ 
+}
+
+/*BAGIAN KANAN---------------------*/
+
+
+.icon-regist{ /*icon di registrasi*/
+    width: 25px;
+    height: 25px;
+}
+
+.custom-input { /*kolom input*/
+    background-color: transparent;
+    border: none;                                      
+    outline: none;                   
+    box-shadow: none;
+    font-size: 18px;
+    color: #3F0216; /*Warna teks input*/
+    flex-grow: 1;
+    padding: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-select {
+    background-color: transparent;
+    border: none;                                      
+    outline: none;                   
+    box-shadow: none;
+    font-size: 18px;
+    color: #3F0216; /* Warna teks input */
+    flex-grow: 1;
+    padding: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input::placeholder { /*hilang klo diketik*/
+    color: #815162;
+    opacity: 1;
+}
+
+.custom-select::placeholder { /*hilang klo diketik*/
+    color: #815162;
+    opacity: 1;
+}
+
+.custom-input:focus { /*highlight pas klik*/
+    box-shadow: 0 0 0 0.2rem #ffccdda4; 
+    outline: none;
+    background-color: #ffccdd9d;
+}
+
+.custom-select:focus { /*highlight pas klik*/
+    box-shadow: 0 0 0 0.2rem #ffccdda4; 
+    outline: none;
+    background-color: #ffccdd9d;
+}
+
+.input-icon-group {
+    gap: 20px; /* Jarak antara ikon dan input */
+    border-bottom: 1px solid #FFCCDD;
+    padding-bottom: 10px; /* Jarak antara garis bawah dan input/ikon */
+    margin-bottom: 18px; /* Jarak antar grup input (di bawah garis) */
+    width: 100%;
+}
+
+.login-group {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.forget {
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    margin-right: 290px;
+    font-size: 18px;
+    margin-top: 15px;
+    text-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom {
+    background-color: #FFCCDD;      
+    color: #3F0216;                   
+    font-family: 'Poppins', sans-serif;  
+    font-size: 18px;          
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2); /* x-offset y-offset blur-radius spread-radius color */
+}
+
+.btn-custom:hover { /* warna saat hover */
+    background-color: #944a5dce;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+    outline: none; /*hilangkan border hitam default pas klik*/
+}
+
+.right-panel { /*bagian kanan panel*/
+    width: 65%;
+    background-color: #E18EA0;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+}
+
+
+/*BAGIAN KIRI---------------------*/
+
+.nav-link { /*aturan yg sm nav-kiri nav-bawah spy ga double*/
+    font-weight: bold;
+    font-size: 25px;
+    display: block; /* Penting! Agar width berfungsi */
+    text-align: center;
+    width: 180px;
+    box-sizing: border-box;
+    padding: 20px 0px 20px 0px; /*atas-kanan-bawah-kiri (panjang diatur width)*/
+}
+.nav-link:hover { /* warna saat hover */
+    background-color: #993e5d;
+    color: #FFE2EC;
+}
+
+.nav-atas { /*sign*/
+    background-color: #E18EA0;
+    border: 3px solid #E18EA0;
+    border-radius: 20px;  
+    margin-bottom: 30px;
+    color: #6B1934;
+}
+
+.nav-bawah { /*login*/
+    border: 3px solid #E18EA0;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    color: #6B1934;
+}
+
+.left-panel { /*bagian kiri panel*/
+    width: 35%;
+    background-color: #FFE2EC;
+    padding: 40px 0;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+/*pesan error*/
+
+.alert-danger {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.alert-danger.validation-multi-error ul {
+    list-style: disc; /*bullet point*/
+    padding-left: 20px; /*spy bullet terlihat*/
+}
+
+.tooltip-msg { /*pesan input*/
+    position: absolute;
+    bottom: 45px; /*naik ke atas input*/
+    left: 40px; /*jarak dari ikon*/
+    background-color: #FFCCDD;
+    color: #3F0216;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 10;
+    max-width: 300px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*FORGET PASSWORD---------------------*/ /*Tengah secara Horizontal: elemen berada di tengah dari kiri ke kanan*/
+/*BAGIAN KANAN---------------------*/    /*Tengah secara Vertikal: elemen berada di tengah dari atas ke bawah*/
+
+.kanan-panel {
+    width: 55%;
+    background-color: #E18EA0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Memusatkan kotak-pw secara horizontal di dalam kanan-panel */
+    align-items: center; /* Memusatkan kotak-pw secara vertikal di dalam kanan-panel */
+    /* Pastikan kanan-panel memiliki tinggi yang cukup jika ingin centering vertikal bekerja */
+    height: 100vh; /* Contoh, sesuaikan dengan kebutuhan layout utama */
+}
+
+.kotak-pw {
+    background-color: #FFE2EC;
+    padding: 10%; /* Gunakan padding yang simetris atau sesuai kebutuhan */
+    border-radius: 5%;
+    width: 680px; /* Contoh lebar FIX (misal 400px) */
+    height: 640px; /* Contoh min-height agar justify-content punya ruang */
+    display: flex;
+    flex-direction: column; /* Item ditumpuk dari atas ke bawah */
+    align-items: center;    /* Memusatkan item secara horizontal di dalam kotak-pw */
+    justify-content: center; /* <<< Ganti ini ke 'center' untuk memusatkan item secara vertikal */
+    gap: 20px; /* Tambahkan gap di sini untuk jarak antar elemen (judul, input, tombol) */
+}
+
+.text-forget {
+    /* Hapus justify-content: center; dari sini, tidak berlaku */
+    font-family: 'Croissant One', cursive;
+    font-weight: bold;
+    color: #3F0216;
+    /* padding-top: 30px; akan membuat jarak dari atas kotak-pw. Sesuaikan jika sudah pakai gap. */
+    /* Jika ingin teks di tengah horizontal, pastikan ini adalah block element dan tidak ada lebar yang membatasi */
+    text-align: center; /* Lebih tepat untuk memusatkan teks di dalam elemen h2 */
+    width: 100%; /* Pastikan elemen ini selebar mungkin untuk text-align center bekerja */
+}
+
+.pesan {
+    background-color: #FFCCDD;
+    color: #3F0216;
+    padding: 15px 10px 15px 10px; /*atas-kanan-bawah-kiri*/
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.input-forget {
+    display: flex; /* <<< Tambahkan ini agar Flexbox bekerja di sini */
+    gap: 20px;
+    border-bottom: 1px solid #3F0216;
+    padding-bottom: 10px;
+    width: calc(100% - (2 * 0px)); /* Sesuaikan dengan padding horizontal .kotak-pw jika perlu.
+                                     Jika ingin full width dari *konten* kotak-pw, cukup 100% */
+    /* Pastikan icon-regist dan custom-input adalah flex items */
+    align-items: center; /* Untuk memusatkan ikon dan input secara vertikal relatif satu sama lain */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+.continue {
+    background-color: #E18EA0;
+    color: #3F0216;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    border: none;
+    padding: 10px 20px; /* Beri padding horizontal agar tombol ada lebar */
+    border-radius: 80px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.continue:hover { /* warna saat hover */
+    background-color: #993e5d;
+    color: #FFE2EC;
+    outline: none; /*hilangkan border hitam default pas klik*/
+}
+
+.daftar { 
+    font-family: 'Poppins', sans-serif;
+    color: #3F0216;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.otp-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.otp-input {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #ffccdda4;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(153, 62, 93, 0.3); /* offsetX (0) offsetY (4) blur-radius color;*/
+    transition: all 0.2s ease;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.otp-input:focus {
+    border-color: #E18EA0; 
+    box-shadow: 0 0 10px 2px #E18EA0; 
+}
+
+
+
+/*BAGIAN KIRI---------------------*/
+
+.kiri-panel { /*bagian kiri panel*/
+    width: 45%;
+    height: 100vh;
+    background-color: #E18EA0;
+    padding: 0px; /*atas-kanan-bawah-kiri*/
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.muda {
+    background-color: #F0B9C7;
+    width: 200px;
+    height: 100%;
+    align-items: center;
+}
+.pink {
+    background-color: #E79FB0;
+    width: 200px;
+    height: 100%;
+    align-items: center;
+}
+
+.logo-forget {
+    position: absolute;
+    top: 50%;           /* Pindahkan 50% dari atas parent yang diposisikan */
+    left: 50%;          /* Pindahkan 50% dari kiri parent yang diposisikan */
+    transform: translate(-50%, -50%); /* Geser elemen kembali sebesar separuh lebarnya sendiri */
+}
+
+/*PROFIL---------------------*/
+
+.profil-wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh; /* biar minimal tetap 1 layar */
+  gap: 0px;
+}
+
+/*BAGIAN KIRI---------------------*/
+
+.sidebar {
+  font-family: 'Poppins', sans-serif;
+  width: 200px;
+  height: 100%; /* beri jarak vertikal */
+  background-color: #E18EA0;
+  padding: 20px 10px;
+  margin: 8px; /* tambahkan margin untuk memberi ruang di sekeliling */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+/* Kontainer utama untuk logo */
+.logo {
+  position: relative; /* Membuat kontainer sebagai referensi posisi */
+  width: 150px; /* Lebar kontainer */
+  height: 150px; /* Tinggi kontainer */
+  background-color: #ffccdd; /* Warna latar belakang */
+  border-radius: 20px; /* Radius sudut */
+  margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+  overflow: hidden;
+}
+
+/* Elemen yang menampung gambar logo */
+.logo-img {
+  position: absolute; /* Mengatur posisi absolut relatif terhadap .logo */
+  top: 50%; /* Posisi vertikal 50% dari kontainer */
+  left: 50%; /* Posisi horizontal 50% dari kontainer */
+  transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
+  width: 68%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 68%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  object-fit: contain; /* Menjaga proporsi gambar */
+}
+
+.menu-btn, a.menu-btn {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8cbd8;
+  border: none;
+  margin: 10px 0;
+  padding: 12px;
+  height: 40px;
+  width: 100%;
+  border-radius: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #4b2c3a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+  outline: none;
+}
+
+.menu-btn:hover, a.menu-btn:hover {
+    background-color:  #b7345d; /* warna background saat hover */
+    color: #fff; /* warna teks saat hover */
+    text-decoration: none; /* pastikan underline tetap hilang saat hover */
+    outline: none;
+}
+
+.icon-menu {
+    max-width: 25px;
+}
+
+.panel-profil-kr {
+    width: 20%;
+    background-color: #FFE2EC;
+    padding: 40px 20px; /* Atur padding kiri-kanan di sini saja */
+    box-sizing: border-box; /* Supaya padding tidak menambah total lebar */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    flex-shrink: 1;
+}
+
+/*BAGIAN KANAN---------------------*/
+
+.panel-profil-kn { /*bagian kanan panel*/
+    width: 80%;
+    background-color: #FFE2EC;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;       /* ← PENTING */
+    justify-content: flex-start;  /* ← pastikan tetap */
+    align-items: center; 
+}
+
+.card-profil {
+    background: #E18EA0;
+    padding: 10px 250px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.usrname {
+    text-align: center;
+    color: white;
+    font-family: 'Croissant One', cursive;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.tampil-data {
+    background-color: #FFE2EC;
+    padding: 10px 13px 10px 13px; /*atas-kanan-bawah-kiri*/ 
+    color: #3F0216;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-weight: normal;
+    width: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.custom-seks { /*tampil data buat jenis kelamin*/
+    background-color: #C3B2B8;
+    padding: 10px 13px 10px 13px; /*atas-kanan-bawah-kiri*/ 
+    color: #3F0216;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-weight: normal;
+    width: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.edit-data {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.edit-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #3F0216;
+    font-size: 22px;
+    padding-left: 16px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFE2EC;
+    color: #3F0216;
+    font-size: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.edit-seks {
+    background: #C3B2B8;
+    
+}
+
+.custom-input.fc-pr:focus { /*untk fokus inputannya khusus form profil*/
+    box-shadow: 0 0 0 0; 
+    outline: none;
+    background-color: transparent;
+}
+
+.panah {
+    appearance: none;
+}
+
+.t-edit { /*pesan input pengaturan tambahan tooltip-msg*/
+    bottom: 52px; /*naik ke atas input*/
+    left : 200px; /*jarak dari ikon*/
+}
+
+
+
+
+
