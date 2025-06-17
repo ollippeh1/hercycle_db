@@ -25,7 +25,7 @@ class Dashboard extends BaseController
         $dataKalender = $kalenderModel->getLatestPeriodEntry($userId);
 
         // Jika tidak ada data kalender sama sekali
-        if (!$dataKalender || empty($dataKalender['tanggal_mulai_haid'])) {
+        if (!$dataKalender || empty($dataKalender['tanggal_haid'])) {
             return view('dashboard', [
                 'kalenderMingguan' => [],
                 'dataKalender' => [],
@@ -41,7 +41,7 @@ class Dashboard extends BaseController
         $lamaHaid = (int) $dataKalender['lama_haid'];
         
         // Referensi utama adalah tanggal MULAI haid terakhir yang tercatat
-        $tanggalMulaiHaidTerakhir = new DateTime($dataKalender['tanggal_mulai_haid']);
+        $tanggalMulaiHaidTerakhir = new DateTime($dataKalender['tanggal_haid']);
         
         // Prediksi Haid Berikutnya (tanggal mulai haid terakhir + siklus)
         $haidBerikutnya = clone $tanggalMulaiHaidTerakhir;
@@ -144,7 +144,7 @@ class Dashboard extends BaseController
         $model = new Kalender_splash();
         $model->insert([
             'user_id' => session()->get('id_user'),
-            'tanggal_mulai_haid' => $tanggalMulai, // Pastikan kolom ini diizinkan di model
+            'tanggal_haid' => $tanggalMulai, // Pastikan kolom ini diizinkan di model
             'lama_haid' => $durasi,
             'siklus_haid' => $siklus, // Simpan siklus juga
             // 'tanggal_akhir_haid' => (new DateTime($tanggalMulai))->modify('+' . ($durasi - 1) . ' days')->format('Y-m-d'), // Bisa dihitung

@@ -46,30 +46,25 @@ body {
 
 /* Kontainer utama untuk logo */
 .logo {
-    position: relative;
-    /* Membuat kontainer sebagai referensi posisi */
-    width: 150px;
-    /* Lebar kontainer */
-    height: 150px;
-    /* Tinggi kontainer */
-    background-color: #ffccdd;
-    /* Warna latar belakang */
-    border-radius: 20px;
-    /* Radius sudut */
-    margin: 0 auto 20px;
-    /* Margin atas/bawah dan horisontal otomatis */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  position: relative; /* Membuat kontainer sebagai referensi posisi */
+  width: 150px; /* Lebar kontainer */
+  height: 150px; /* Tinggi kontainer */
+  background-color: #ffccdd; /* Warna latar belakang */
+  border-radius: 20px; /* Radius sudut */
+  margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+  overflow: hidden;
 }
 
 /* Elemen yang menampung gambar logo */
 .logo-img {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.5);
-    width: 130%;
-    height: 130%;
-    object-fit: contain;
+  position: absolute; /* Mengatur posisi absolut relatif terhadap .logo */
+  top: 70%; /* Posisi vertikal 50% dari kontainer */
+  left: 50%; /* Posisi horizontal 50% dari kontainer */
+  transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
+  width: 120%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 120%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  object-fit: contain; /* Menjaga proporsi gambar */
 }
 
 .menu-btn {

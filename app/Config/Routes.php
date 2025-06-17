@@ -8,7 +8,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
 $routes->group('admin', function ($routes) {
     $routes->get('materi', 'Materi::index');
     $routes->get('materi/tambah', 'Materi::tambah');
@@ -81,3 +80,9 @@ $routes->post('/catat-haid-hari-ini', 'Dashboard::catatHaidHariIni');
 
 $routes->setAutoRoute(false);
 
+$routes->get('/', 'Kalender::index'); // Biar root juga buka kalender
+$routes->get('kalender', 'Kalender::index');
+
+
+$routes->get('/kalender', 'Kalender::index');
+$routes->post('/kalender/simpan', 'Kalender::simpan');

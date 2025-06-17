@@ -35,6 +35,7 @@ body {
   border-radius: 20px; /* Radius sudut */
   margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+  overflow: hidden;
 }
 
 /* Elemen yang menampung gambar logo */
@@ -43,10 +44,11 @@ body {
   top: 70%; /* Posisi vertikal 50% dari kontainer */
   left: 50%; /* Posisi horizontal 50% dari kontainer */
   transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
-  width: 130%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
-  height: 130%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  width: 120%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 120%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
   object-fit: contain; /* Menjaga proporsi gambar */
 }
+
 
 .menu-btn {
   font-family: 'Poppins', sans-serif;

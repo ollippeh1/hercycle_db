@@ -8,7 +8,7 @@ class Kalender_splash extends Model
     protected $table      = 'kalender';
     protected $primaryKey = 'id_kalender';
     // Pastikan semua kolom yang akan Anda gunakan dalam insert/update ada di sini
-    protected $allowedFields = ['user_id', 'tanggal_mulai_haid', 'lama_haid', 'siklus_haid', 'tanggal_akhir_haid'];
+    protected $allowedFields = ['user_id', 'tanggal_haid', 'lama_haid', 'siklus_haid', 'tanggal_akhir_haid'];
 
     /**
      * Mencatat hari ini sebagai tanggal mulai periode haid baru atau memperbarui yang terakhir.
@@ -25,17 +25,17 @@ class Kalender_splash extends Model
 
         // Cari entri terakhir untuk pengguna ini berdasarkan tanggal mulai haid
         $existing = $this->where('user_id', $userId)
-                         ->orderBy('tanggal_mulai_haid', 'DESC') // Penting: Urutkan berdasarkan tanggal mulai haid
+                         ->orderBy('tanggal_haid', 'DESC') // Penting: Urutkan berdasarkan tanggal mulai haid
                          ->first();
 
         // Jika tanggal mulai haid terakhir sudah hari ini, anggap sudah tercatat
-        if ($existing && $existing['tanggal_mulai_haid'] === $today) {
+        if ($existing && $existing['tanggal_haid'] === $today) {
             return false; // Sudah dicatat untuk hari ini
         }
 
         $data = [
             'user_id' => $userId,
-            'tanggal_mulai_haid' => $today, // Tanggal mulai periode yang baru dicatat
+            'tanggal_haid' => $today, // Tanggal mulai periode yang baru dicatat
             'lama_haid' => $existing['lama_haid'] ?? $defaultLamaHaid, // Pertahankan yang sudah ada atau gunakan default
             'siklus_haid' => $existing['siklus_haid'] ?? $defaultSiklusHaid, // Pertahankan yang sudah ada atau gunakan default
             // Anda bisa mengosongkan atau menghitung 'tanggal_akhir_haid' di sini jika diperlukan
@@ -66,15 +66,15 @@ class Kalender_splash extends Model
         // Ambil semua record periode haid untuk pengguna
         // Urutkan untuk efisiensi, dari yang terbaru
         $allPeriods = $this->where('user_id', $userId)
-                           ->orderBy('tanggal_mulai_haid', 'DESC')
+                           ->orderBy('tanggal_haid', 'DESC')
                            ->findAll();
 
         foreach ($allPeriods as $period) {
             // Pastikan kolom penting ada dan tidak kosong
-            if (empty($period['tanggal_mulai_haid']) || empty($period['lama_haid'])) {
+            if (empty($period['tanggal_haid']) || empty($period['lama_haid'])) {
                 continue; // Lewati record yang tidak lengkap
             }
-            $periodStartDate = new DateTime($period['tanggal_mulai_haid']);
+            $periodStartDate = new DateTime($period['tanggal_haid']);
             $periodEndDate = clone $periodStartDate;
             $periodEndDate->modify('+' . ($period['lama_haid'] - 1) . ' days');
 
@@ -96,7 +96,7 @@ class Kalender_splash extends Model
     public function getLatestPeriodEntry(int $userId)
     {
         return $this->where('user_id', $userId)
-                    ->orderBy('tanggal_mulai_haid', 'DESC') // Penting: Ambil yang terbaru berdasarkan tanggal mulai haid
+                    ->orderBy('tanggal_haid', 'DESC') // Penting: Ambil yang terbaru berdasarkan tanggal mulai haid
                     ->first();
     }
 
@@ -111,8 +111,8 @@ class Kalender_splash extends Model
     {
         $latestPeriod = $this->getLatestPeriodEntry($userId);
 
-        if ($latestPeriod && !empty($latestPeriod['tanggal_mulai_haid']) && !empty($latestPeriod['lama_haid'])) {
-            $periodStartDate = new DateTime($latestPeriod['tanggal_mulai_haid']);
+        if ($latestPeriod && !empty($latestPeriod['tanggal_haid']) && !empty($latestPeriod['lama_haid'])) {
+            $periodStartDate = new DateTime($latestPeriod['tanggal_haid']);
             $periodEndDate = clone $periodStartDate;
             $periodEndDate->modify('+' . ($latestPeriod['lama_haid'] - 1) . ' days');
 
@@ -121,6 +121,7 @@ class Kalender_splash extends Model
                 return $periodStartDate->diff($todayDate)->days + 1; // Hari ke-X menstruasi
             }
         }
+        
         return null;
     }
 }

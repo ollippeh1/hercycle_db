@@ -1,0 +1,198 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFE2EC;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #E18EA0;
+  padding: 20px 10px;
+  margin: 8px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Kontainer utama untuk logo */
+.logo {
+  position: relative; /* Membuat kontainer sebagai referensi posisi */
+  width: 150px; /* Lebar kontainer */
+  height: 150px; /* Tinggi kontainer */
+  background-color: #ffccdd; /* Warna latar belakang */
+  border-radius: 20px; /* Radius sudut */
+  margin: 0 auto 20px; /* Margin atas/bawah dan horisontal otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Efek bayangan */
+  overflow: hidden;
+}
+
+/* Elemen yang menampung gambar logo */
+.logo-img {
+  position: absolute; /* Mengatur posisi absolut relatif terhadap .logo */
+  top: 70%; /* Posisi vertikal 50% dari kontainer */
+  left: 50%; /* Posisi horizontal 50% dari kontainer */
+  transform: translate(-50%, -50%) scale(1.5); /* Memindahkan elemen ke tengah dan memperbesar */
+  width: 120%; /* Ukuran lebar logo (sesuaikan jika diperlukan) */
+  height: 120%; /* Ukuran tinggi logo (sesuaikan jika diperlukan) */
+  object-fit: contain; /* Menjaga proporsi gambar */
+}
+
+.menu-btn {
+  background-color: #f8cbd8;
+  border: none;
+  margin: 10px 0;
+  padding: 12px;
+  width: 85%;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #4b2c3a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.menu-btn.active,
+.menu-btn:hover {
+  background-color: #b7345d;
+  color: white;
+}
+
+.icon-menu {
+  height: 30px;
+  width: auto;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.calendar-section {
+  position: relative;
+  flex: 1;
+  padding: 50px 20px 20px 20px;
+  background-color: #e48ea7;
+  color: #fff;
+  border-radius: 20px;
+  margin: 40px 20px 20px 20px; 
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.calendar th, .calendar td {
+  width: 60px;
+  height: 60px;
+  font-size: 18px;
+  padding: 0;
+}
+
+.calendar td.haid {
+  background-color: #B0385E;
+  border-radius: 100%;
+  color: white;
+}
+
+.calendar td.ovulasi {
+  background-color: #FFCCDD;
+  border-radius: 100%;
+  color: #000;
+}
+
+.top-icons {
+  position: absolute;
+  top: -40px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.profile-btn,
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.legend {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.legend .dot {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.legend .dot.haid-dot {
+  background-color: #B0385E;
+}
+
+.legend .dot.ovulasi-dot {
+  background-color: #FFCCDD;
+}
+
+.legend .dot.next-dot {
+  background-color: #FFA07A;
+}
+
+
+/*bru ditambah*/
+
+  .kalender-custom {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .event-haid {
+    background-color: #ff6b6b !important;
+    border: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  .event-ovulasi {
+    background-color: #3cd070 !important;
+    border: none;
+    color: white;
+  }
+
+.top-right-floating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 10px;
+}
+.top-right-floating img {
+  width: 45px;
+  height: 45px;
+}
