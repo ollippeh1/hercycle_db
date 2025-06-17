@@ -10,3 +10,4 @@ class User_splash extends Model
     protected $primaryKey = 'id_user'; // ganti sesuai PK kamu
     protected $allowedFields = ['username', 'email', 'password']; // ganti sesuai isi field tabel kamu
 }
+

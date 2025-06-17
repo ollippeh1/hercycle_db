@@ -167,7 +167,7 @@
                     <?php if ($hari['is_menstruasi']): ?>
                         <div class="indikator-haid"></div>
                     <?php endif; ?>
-                </div>
+                </div> 
             <?php endforeach; ?>
         </div>
         <?php endif; ?>

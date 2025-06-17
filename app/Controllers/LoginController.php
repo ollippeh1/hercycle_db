@@ -66,10 +66,10 @@ class LoginController extends BaseController
 
         session()->set($userData); //bedakan halaman user dan admin pas login
         if ($userData['role'] === 'admin') {
-            return redirect()->to(base_url('edukasiadmin'));
+             return redirect()->to('/admin/materi');
         } else {
             session()->set('id_user', $user['id_user']);
-            return redirect()->to(base_url('dashboad'));
+            return redirect()->to(base_url('dashboard'));
         }
     }
 

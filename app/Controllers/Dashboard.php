@@ -14,7 +14,7 @@ class Dashboard extends BaseController
     public function index()
     {
         $userModel = new User_splash();
-        $kalenderModel = new User_splash(); // Inisiasi KalenderModel
+        $kalenderModel = new Kalender_splash(); // Inisiasi KalenderModel
 
         $userId = session()->get('id_user') ?? 1; // Fallback untuk user ID
         $user = $userModel->find($userId);

@@ -25,14 +25,12 @@ $routes->group('user', function ($routes) {
     $routes->get('edukasi/(:num)', 'Edukasi::detail/$1');
     $routes->get('chatbot', 'Chatbot::index');
     $routes->post('chatbot/generate', 'Chatbot::generateContent');
-});
 
-$routes->group('user', function($routes) {
     $routes->get('chatbot', 'User\ChatbotController::index');
     $routes->post('chatbot/send', 'User\ChatbotController::chat');
 });
 
-$routes->get('/', 'Home::index');
+
 $routes->group('register', function($routes){
     $routes->get('/', 'RegisterController::index');
     $routes->post('/', 'RegisterController::store');

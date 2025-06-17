@@ -272,7 +272,7 @@
         <?php foreach($edukasi as $item): ?>
             <div class="col-md-4 mb-4" style="margin-top: -30px; ">
                 <div class="edukasi" >
-                    <img src="<?= base_url('assets/' . $item['gambar']) ?>" class="card-img-top" alt="..." style="border-radius: 50px;">
+                    <img src="<?= $item['gambar'] ?>" class="card-img-top" alt="..." style="border-radius: 50px;">
                     <div class="judul" style="margin-top: 10px;">
                         <h5 class="card-title"><?= esc($item['judul']) ?></h5>
                     </div>
