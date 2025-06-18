@@ -2,13 +2,17 @@
 
 namespace App\Controllers;
 use App\Models\KalenderModel;
-
 class Kalender extends BaseController
 {
     public function index()
     {
+        $userId = session()->get('id_user');
+        if (!$userId) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
         $model = new KalenderModel();
-        $haid = $model->orderBy('id_kalender', 'DESC')->first();
+        $haid = $model->where('user_id', $userId)->orderBy('id_kalender', 'DESC')->first();
 
         $haidTanggal = null;
         $haidSelesai = null;
@@ -16,8 +20,11 @@ class Kalender extends BaseController
 
         if ($haid && isset($haid['tanggal_haid'])) {
             $haidTanggal = $haid['tanggal_haid'];
-            $haidSelesai = date('Y-m-d', strtotime($haidTanggal . ' +5 days'));
-            $ovulasi = date('Y-m-d', strtotime($haidTanggal . ' +14 days'));
+            $lamaHaid = $haid['lama_haid'] ?? 5;
+            $siklus = $haid['siklus_haid'] ?? 28;
+
+            $haidSelesai = date('Y-m-d', strtotime($haidTanggal . " +$lamaHaid days"));
+            $ovulasi = date('Y-m-d', strtotime($haidTanggal . " +" . ($siklus - 14) . " days"));
         }
 
         $daysInMonth = date('t');
@@ -29,18 +36,25 @@ class Kalender extends BaseController
             'ovulasi' => $ovulasi,
             'days_in_month' => $daysInMonth,
             'start_day' => $startDay,
-            'current' => 'kalender' // ✅ ini ditambahkan
+            'current' => 'kalender'
         ]);
     }
 
     public function simpan()
     {
+        $userId = session()->get('id_user');
+        if (!$userId) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
         $tanggal = $this->request->getPost('tanggal');
         $model = new KalenderModel();
 
         $data = [
+            'user_id' => $userId,
             'tanggal_haid' => date('Y') . '-' . date('m') . '-' . str_pad($tanggal, 2, '0', STR_PAD_LEFT),
-            'siklus_haid' => 28 // default
+            'lama_haid' => 5,
+            'siklus_haid' => 28
         ];
 
         $model->insert($data);

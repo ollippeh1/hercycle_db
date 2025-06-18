@@ -3,30 +3,30 @@
 namespace App\Controllers;
 
 use App\Models\Kalender_splash;
-use App\Models\KalenderModel;
 use App\Models\User_splash;
-use App\Models\UserModel;
 use CodeIgniter\Controller;
-use DateTime; // Pastikan menggunakan PHP's native DateTime
+use DateTime;
 
 class Dashboard extends BaseController
 {
     public function index()
     {
-        $userModel = new User_splash();
-        $kalenderModel = new Kalender_splash(); // Inisiasi KalenderModel
+        $userId = session()->get('id_user');
+        if (!$userId) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
 
-        $userId = session()->get('id_user') ?? 1; // Fallback untuk user ID
+        $userModel = new User_splash();
+        $kalenderModel = new Kalender_splash();
+
         $user = $userModel->find($userId);
         $username = $user['username'] ?? 'Pengguna';
 
-        // Ambil data kalender terakhir yang relevan untuk prediksi
-        // Ini akan mengambil entri terbaru berdasarkan 'tanggal_mulai_haid'
         $dataKalender = $kalenderModel->getLatestPeriodEntry($userId);
 
-        // Jika tidak ada data kalender sama sekali
         if (!$dataKalender || empty($dataKalender['tanggal_haid'])) {
             return view('dashboard', [
+                'current' => 'dashboard',
                 'kalenderMingguan' => [],
                 'dataKalender' => [],
                 'prediksi' => [],
@@ -39,19 +39,14 @@ class Dashboard extends BaseController
 
         $siklus = (int) $dataKalender['siklus_haid'];
         $lamaHaid = (int) $dataKalender['lama_haid'];
-        
-        // Referensi utama adalah tanggal MULAI haid terakhir yang tercatat
+
         $tanggalMulaiHaidTerakhir = new DateTime($dataKalender['tanggal_haid']);
-        
-        // Prediksi Haid Berikutnya (tanggal mulai haid terakhir + siklus)
         $haidBerikutnya = clone $tanggalMulaiHaidTerakhir;
         $haidBerikutnya->modify("+$siklus days");
 
-        // Prediksi Ovulasi (sekitar 14 hari sebelum haid berikutnya)
         $ovulasi = clone $haidBerikutnya;
         $ovulasi->modify('-14 days');
 
-        // Prediksi Peluang Hamil (masa subur, sekitar 4 hari sebelum ovulasi sampai 1 hari setelah)
         $peluangHamilMulai = clone $ovulasi;
         $peluangHamilMulai->modify('-4 days');
 
@@ -59,39 +54,28 @@ class Dashboard extends BaseController
         $peluangHamilSelesai->modify('+1 days');
 
         $today = new DateTime();
-        $hari_ke_haid = null;
-        $teksMenstruasi = '';
-        $statusHamil = '';
-
-        // Tentukan apakah hari ini sedang menstruasi dan hari ke berapa
         $hari_ke_haid = $kalenderModel->getCurrentMenstruationDay($userId, $today);
 
         if ($hari_ke_haid) {
             $teksMenstruasi = ($hari_ke_haid === 1) ? "Hari pertama menstruasi" : "Hari ke-$hari_ke_haid menstruasi";
         } else {
-            // Jika tidak sedang menstruasi, hitung selisih hari menuju periode berikutnya
             $selisih = $today->diff($haidBerikutnya)->days;
             $teksMenstruasi = ($haidBerikutnya > $today) ? "Periode Menstruasi dalam $selisih hari" : "Menstruasi";
         }
-        
-        // Cek status peluang hamil hari ini
+
         $statusHamil = ($today >= $peluangHamilMulai && $today <= $peluangHamilSelesai)
             ? "Peluang hamil tinggi"
             : "Peluang hamil rendah";
 
-        // Buat data untuk kalender mingguan
         $kalenderMingguan = [];
         $minggu = clone $today;
-        // Set awal minggu ke hari Minggu terakhir (Sunday)
-        $minggu->modify('last sunday'); 
-        
+        $minggu->modify('last sunday');
+
         for ($i = 0; $i < 7; $i++) {
             $tanggal = clone $minggu;
             $tanggal->modify("+$i days");
 
             $isToday = $tanggal->format('Y-m-d') === $today->format('Y-m-d');
-            
-            // Gunakan KalenderModel untuk memeriksa apakah tanggal ini adalah hari menstruasi yang tercatat
             $isMenstruasi = $kalenderModel->isDateMenstruating($userId, $tanggal);
 
             $kalenderMingguan[] = [
@@ -102,6 +86,7 @@ class Dashboard extends BaseController
         }
 
         return view('dashboard', [
+            'current' => 'dashboard',
             'kalenderMingguan' => $kalenderMingguan,
             'dataKalender' => $dataKalender,
             'prediksi' => [
@@ -117,37 +102,40 @@ class Dashboard extends BaseController
         ]);
     }
 
-    // Fungsi catat haid otomatis (hari ini)
     public function catatHaidHariIni()
     {
-        $kalenderModel = new Kalender_splash();
-        $userId = session()->get('id_user') ?? 1;
+        $userId = session()->get('id_user');
+        if (!$userId) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
 
-        // Panggil fungsi di model untuk mencatat periode hari ini (tanggal mulai haid)
-        // Default lamaHaid dan siklusHaid bisa disesuaikan atau diambil dari user profile jika ada
-        $lamaHaidDefault = 5;
-        $siklusHaidDefault = 28;
-        $kalenderModel->recordPeriodToday($userId, $lamaHaidDefault, $siklusHaidDefault);
+        $kalenderModel = new Kalender_splash();
+        $kalenderModel->recordPeriodToday($userId, 5, 28);
 
         return redirect()->to('/dashboard')->with('message', 'Periode haid hari ini berhasil dicatat!');
     }
 
-    // Fungsi catatHaid() yang lama (input manual tanggal_mulai dan durasi)
-    // Anda bisa mempertahankan ini jika ada form terpisah untuk input manual
-    // Tetapi jika tujuan "Catat periode haid" hanya untuk hari ini, fungsi ini mungkin tidak terpakai
     public function catatHaid()
     {
+        $userId = session()->get('id_user');
+        if (!$userId) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
         $tanggalMulai = $this->request->getPost('tanggal_mulai');
-        $durasi = $this->request->getPost('durasi');
-        $siklus = $this->request->getPost('siklus_haid') ?? 28; // Tambahkan siklus jika ini form lengkap
+        $durasi = (int)$this->request->getPost('durasi');
+        $siklus = (int)$this->request->getPost('siklus_haid') ?? 28;
+
+        if ($durasi <= 0 || $durasi > 15) {
+            return redirect()->back()->with('error', 'Durasi haid tidak valid.');
+        }
 
         $model = new Kalender_splash();
         $model->insert([
-            'user_id' => session()->get('id_user'),
-            'tanggal_haid' => $tanggalMulai, // Pastikan kolom ini diizinkan di model
+            'user_id' => $userId,
+            'tanggal_haid' => $tanggalMulai,
             'lama_haid' => $durasi,
-            'siklus_haid' => $siklus, // Simpan siklus juga
-            // 'tanggal_akhir_haid' => (new DateTime($tanggalMulai))->modify('+' . ($durasi - 1) . ' days')->format('Y-m-d'), // Bisa dihitung
+            'siklus_haid' => $siklus,
         ]);
 
         return redirect()->to('/dashboard');

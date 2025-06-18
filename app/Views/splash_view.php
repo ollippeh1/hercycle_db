@@ -295,7 +295,7 @@
 
 <p style="width: 600px; padding-left: 100px; margin-top: 30px; padding-bottom: 40px">Semoga apa yang kami sajikan di sini bisa bermanfaat dan membuat kamu merasa lebih siap, lebih paham, dan lebih percaya diri.</p>
 <div class="kita">
-<img src="/assets/tentang.jpg" alt="kami" style="border-radius: 50px; display: block; margin-left: auto; margin-right: 100px; margin-top: -400px; width: 500px;">      
+<img src="assets/img/foto.jpg" alt="kami" style="border-radius: 50px; display: block; margin-left: auto; margin-right: 100px; margin-top: -400px; width: 500px;">      
 </div>
 </div>
 </section>

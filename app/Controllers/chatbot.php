@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Controllers\BaseController;
 class Chatbot extends BaseController
 {
+
     public function index()
     {
         $data = [
